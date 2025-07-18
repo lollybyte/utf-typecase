@@ -1,0 +1,13 @@
+[project]
+name = "utf-typecase"
+version = "0.1.0"
+description = "Remote Unicode keyboard: select UTF characters in a browser and insert them on another device."
+authors = [{name="AlexanderGoebel", email="lollybyte.git@gmail.com"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.7"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+

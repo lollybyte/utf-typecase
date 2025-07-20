@@ -21,7 +21,7 @@
 
 venv=".utf-typecase-env"
 requirements_file="requirements.txt"
-dev_requirements_file="dev-requirements.txt"
+dev_requirements_file="requirements-dev.txt"
 python_cmd="python3"
 
 echo "🛠 Starting setup..."

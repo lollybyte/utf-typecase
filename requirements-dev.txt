@@ -1,0 +1,9 @@
+# Build-Tools
+build           # creating-distribution-files
+twine           # upload-to-pypi
+# Testing
+pytest          # test-runner
+pytest-cov      # coverage-reports
+mypy            # type-checker
+black           # code-formatter
+flake8          # style-and-lint-checker

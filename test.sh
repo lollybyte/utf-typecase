@@ -14,8 +14,8 @@
 #   - Python environment with pytest, pytest-cov, black, mypy, flake8 installed
 #   - The utf_typecase module and tests should be correctly configured
 
-app="utf_typecase"
-tests="utf_typecase/tests"
+app="src/utf_typecase"
+tests="tests"
 
 
 # === Run Tests and Coverage ===

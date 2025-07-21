@@ -32,6 +32,18 @@ pip install utf-typecase
 
 ---
 
+## Run Application
+```
+# Run both client and server
+utf-typecase --run-server --run-client
+
+# Run server only
+utf-typecase --run-server --port 8080
+
+# Run client only
+utf-typecase --run-client --host http://192.168.1.50:5000 --token mysecret
+```
+
 ## 🔢 Alpha Version Summary
 
 | Version   | Highlights                                                                 |

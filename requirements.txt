@@ -1,4 +1,8 @@
 # Commandline-Interface
-click               # build-commandline-interface
-click-completion    # shell-autocompletion
-click-pwsh          # shell-autocompletion-powershell
+click              # build-commandline-interface
+click-completion   # shell-autocompletion
+click-pwsh         # shell-autocompletion-powershell
+flask              # web-framework
+requests           # HTTP requests
+pyautogui          # GUI automation
+pyperclip          # clipboard management

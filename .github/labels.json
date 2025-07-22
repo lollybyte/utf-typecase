@@ -1,0 +1,33 @@
+[
+  { "name": "type: bug", "color": "d73a4a", "description": "Something isn't working" },
+  { "name": "type: feature", "color": "a2eeef", "description": "New feature or request" },
+  { "name": "type: enhancement", "color": "84b6eb", "description": "Improvement to existing feature" },
+  { "name": "type: question", "color": "d876e3", "description": "Further information is requested" },
+  { "name": "type: documentation", "color": "#0075ca", "description": "Improvements or additions to documentation" },
+  { "name": "type: idea/proposal", "color": "", "description": "for open-ended creative suggestions" },
+  { "name": "type: testing/qa", "color": "", "description": "for reporting flaky behavior or edge cases" },
+  { "name": "type: support/help setup", "color": "", "description": "for config, environment, or installation questions" },
+  { "name": "type: refactoring/cleanup", "color": "", "description": "for non-functional improvements" },
+
+  { "name": "priority: high", "color": "e11d21", "description": "Needs immediate attention" },
+  { "name": "priority: medium", "color": "fbca04", "description": "Important but not urgent" },
+  { "name": "priority: low", "color": "c2e0c6", "description": "Can be addressed later" },
+
+  { "name": "status: needs review", "color": "fef2c0", "description": "Waiting for code review" },
+  { "name": "status: in progress", "color": "bfe5bf", "description": "Actively being worked on" },
+  { "name": "status: blocked", "color": "e99695", "description": "Cannot proceed until something is resolved" },
+  { "name": "status: done", "color": "0e8a16", "description": "Work is complete" },
+
+  { "name": "effort: 1", "color": "f9d0c4", "description": "Trivial task" },
+  { "name": "effort: 3", "color": "f7c6c7", "description": "Small task" },
+  { "name": "effort: 5", "color": "f7c6c7", "description": "Medium task" },
+  { "name": "effort: 8", "color": "f7c6c7", "description": "Large task" },
+  { "name": "effort: 13", "color": "f7c6c7", "description": "Very large or complex task" },
+
+  { "name": "help wanted", "color": "33aa3f", "description": "Extra attention is needed" },
+  { "name": "good first issue", "color": "7057ff", "description": "Great for newcomers" },
+
+  { "name": "duplicate", "color": "#cfd3d7", "description": "This issue or pull request already exists" },
+  { "name": "wontfix", "color": "#ffffff", "description": "This will not be worked on" }
+]
+

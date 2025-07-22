@@ -41,17 +41,19 @@ HTML_PAGE = """
     <div class="grid" id="buttonGrid"></div>
 
     <script>
-        document.getElementById("charForm").onsubmit = function(e) {
-            e.preventDefault();
-            const chars = document.getElementById("chars").value;
-            const token = document.getElementById("token").value;
+        // Automatically populate input fields
+        const symbols = "—’→∞⏳★✅✓❌🌐🎯👉👋💡🔐🔧🚨🧠🧩🧪🧲🧼";  // default symbols
+        document.getElementById("chars").value = symbols;
+        document.getElementById("token").value = "dev";       // default token
+
+        function generateButtons(chars, token) {
             const grid = document.getElementById("buttonGrid");
             grid.innerHTML = "";
 
             for (let c of chars) {
                 const btn = document.createElement("button");
                 btn.className = "char-btn";
-    const hex = c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0');
+                const hex = c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0');
                 btn.innerText = c + "\\nU+" + hex;
                 btn.onclick = () => {
                     fetch("/send", {
@@ -64,6 +66,21 @@ HTML_PAGE = """
                 };
                 grid.appendChild(btn);
             }
+        }
+
+        // Generate buttons automatically on page load
+        window.addEventListener("load", () => {
+            const chars = document.getElementById("chars").value;
+            const token = document.getElementById("token").value;
+            generateButtons(chars, token);
+        });
+
+        // Manual form submission
+        document.getElementById("charForm").onsubmit = function(e) {
+            e.preventDefault();
+            const chars = document.getElementById("chars").value;
+            const token = document.getElementById("token").value;
+            generateButtons(chars, token);
         };
     </script>
 </body>
@@ -110,8 +127,10 @@ def get_characters():
     character_store[token] = []
     return jsonify(ok=True, characters=chars)
 
+
 def start_server(port=5000, host="127.0.0.1", debug=False, **kwargs):
     app.run(port=port, host=host, debug=debug, **kwargs)
+
 
 # For quick testing: run with 'python src/utf_typecase/server.py'
 if __name__ == "__main__":

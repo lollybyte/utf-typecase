@@ -17,6 +17,15 @@
 app="src/utf_typecase"
 tests="tests"
 
+# === Licensecheck ===
+# Ignoring python3-xlib because it is only used transitively via pyautogui (BSD-licensed) and mouseinfo (GPLv3).
+# The library itself is legacy (GPLv2) and unmaintained, but its usage is wrapped by GPLv3 code,
+# making the overall project compatible with GPLv3 under mouseinfo's licensing terms.
+# pip show python3-xlib mouseinfo pyautogui 
+echo ""
+echo "🧠 Running Licensecheck..."
+licensecheck --license gplv3 --show-only-failing --ignore-packages  python3-xlib
+echo ""
 
 # === Run Tests and Coverage ===
 echo ""
@@ -30,7 +39,7 @@ black "$app" "$tests"
 echo ""
 
 # === Type Check ===
-echo "🧠 Checking types with MyPy..."
+echo "🧷 Checking types with MyPy..."
 mypy "$app"
 echo ""
 

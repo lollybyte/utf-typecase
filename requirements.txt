@@ -6,3 +6,5 @@ flask              # web-framework
 requests           # HTTP requests
 pyautogui          # GUI automation
 pyperclip          # clipboard management
+netifaces          # network interface information
+qrcode             # QR code generation

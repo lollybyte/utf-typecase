@@ -4,11 +4,14 @@ import click
 from utf_typecase.server import start_server
 from utf_typecase.client import UTFClient
 from utf_typecase.paste import Paster
+from utf_typecase.interfaces import print_qr_grid
+from utf_typecase.banner import print_banner_for_release
 import threading
 import time
 import sys
 from click_completion import init
 from click_pwsh import support_pwsh_shell_completion
+from utf_typecase import __version__
 
 # Enable shell completion
 init()
@@ -19,15 +22,37 @@ support_pwsh_shell_completion()
 @click.option("--run-server", is_flag=True, help="Start the UTF server")
 @click.option("--run-client", is_flag=True, help="Start the UTF client")
 @click.option("--port", type=int, default=5000, help="Port to bind/connect to")
-@click.option("--token", type=str, default="devtoken123", help="Authentication token")
+@click.option("--token", type=str, default="dev", help="Authentication token")
 @click.option("--host", type=str, help="Remote server URL if client runs standalone")
-@click.option("--install-completion", is_flag=True, help="Install shell completion for your shell")
-def main(run_server, run_client, port, token, host, install_completion):
+@click.option("--qrcode", is_flag=True, help="network interface information")
+@click.option(
+    "--qrcode-inverted", is_flag=True, help="network interface information inverted"
+)
+@click.option(
+    "--install-completion", is_flag=True, help="Install shell completion for your shell"
+)
+@click.version_option(version=__version__)
+def main(
+    run_server,
+    run_client,
+    port,
+    token,
+    host,
+    qrcode,
+    qrcode_inverted,
+    install_completion,
+):
     """Launch UTF Typecase server and/or client."""
 
     if install_completion:
         _install_completion()
         return
+
+    print_banner_for_release(__version__, padding=1, align="left")
+
+    if qrcode or qrcode_inverted:
+        print("📡 Discoverable Flask Endpoints via QR Code:")
+        print_qr_grid(port=port, border=2, invert=qrcode_inverted)
 
     if not run_server and not run_client:
         click.echo("❌ Nothing to run. Use --run-server and/or --run-client.")
@@ -46,8 +71,8 @@ def main(run_server, run_client, port, token, host, install_completion):
         click.echo(f"🧩 Starting server on port {port}...")
         server_thread = threading.Thread(
             target=start_server,
-            kwargs={"port": port, "host": "127.0.0.1", "debug": False},
-            daemon=True
+            kwargs={"port": port, "host": "0.0.0.0", "debug": False},
+            daemon=True,
         )
 
         server_thread.start()
@@ -77,6 +102,7 @@ def main(run_server, run_client, port, token, host, install_completion):
         except KeyboardInterrupt:
             click.echo("👋 Server stopped.")
 
+
 def _install_completion():
     import platform
 
@@ -90,6 +116,7 @@ def _install_completion():
         click.echo("👉 Run this in your shell (Bash, Zsh, etc):")
         click.echo('eval "$(_UTF_TYPECASE_COMPLETE=bash_source utf-typecase)"')
         click.echo("💡 Add it to your shell config file to persist.")
+
 
 if __name__ == "__main__":
     main()

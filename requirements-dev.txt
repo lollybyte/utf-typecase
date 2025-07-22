@@ -8,3 +8,7 @@ mypy            # type-checker
 types-requests  # type-checking-for-requests
 black           # code-formatter
 flake8          # style-and-lint-checker
+licensecheck    # check-license-compliance
+tomli           # parsing toml files
+# Editable install of the current package
+-e .

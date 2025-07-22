@@ -1,6 +1,7 @@
 dist
 build
 **/__pycache__/
+.*_cache
 utf_typecase.egg-info
 .utf-typecase-env
 .coverage
